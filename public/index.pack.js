@@ -3,35 +3,32 @@
 // all TypeScript weakness flags.
 // : number
 import { showReviewTotal, populateUser } from "./utils.js";
-import { Permissions, LoyaltyUser } from "./enums.js";
 const footer = document.querySelector('.footer');
 const propertyContainer = document.querySelector('.properties');
-let isLoggedIn;
+let isOpen;
 const reviews = [
     {
         name: 'Sheia',
         stars: 5,
-        loyaltyUser: LoyaltyUser.GOLD_USER,
+        loyaltyUser: true,
         date: '01-04-2021'
     },
     {
         name: 'Andrzej',
         stars: 3,
-        loyaltyUser: LoyaltyUser.BRONZE_USER,
+        loyaltyUser: false,
         date: '28-03-2021'
     },
     {
         name: 'Omar',
         stars: 4,
-        loyaltyUser: LoyaltyUser.SILVER_USER,
-        date: '27-03-2021',
-        description: 'Great hosts, location was a bit further than said.'
+        loyaltyUser: true,
+        date: '27-03-2021'
     },
 ];
 const you = {
     firstName: "Bobby",
     lastName: "Brown",
-    permissions: Permissions.ADMIN,
     isReturning: true,
     age: 35,
     stayedAt: ['florida-home', 'oman-flat', 'tokyo-bungalow'],
@@ -89,7 +86,6 @@ for (let i = 0; i < properties.length; i++) {
     const image = document.createElement("img");
     image.setAttribute("src", properties[i].image);
     card.appendChild(image);
-    showDetails(you.permissions, card, properties[i].price);
     propertyContainer.appendChild(card);
 }
 let currentLocation = ['London', '11.03', 17];
