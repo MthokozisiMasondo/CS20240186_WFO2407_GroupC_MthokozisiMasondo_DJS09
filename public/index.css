@@ -54,3 +54,32 @@ body {
     padding: 30px;
     color: white;
 }
+
+.review-card {
+    padding: 10px;
+}
+
+.reviews {
+    display: flex;
+    padding: 10px;
+}
+
+.break {
+    margin-top: 15px;
+    height: 1px;
+    width: 90%;
+    background-color: coral;
+}
+
+button {
+    background-color: rgb(0,128,0);
+    color: rgb(255,255,255);
+    border-radius: 5px;
+    border: none;
+    padding: 10px;
+    
+}
+
+button:hover {
+    background-color: rgb(218,165,32);
+}

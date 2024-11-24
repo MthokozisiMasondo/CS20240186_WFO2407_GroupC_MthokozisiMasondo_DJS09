@@ -2,11 +2,13 @@
 // Write a function that will only accept numbers and attend to 
 // all TypeScript weakness flags.
 // : number
-import { showReviewTotal, populateUser } from "./utils.js";
+import { showReviewTotal, populateUser, showDetails, getTopTwoReviews } from "./utils.js";
 import { Permissions, LoyaltyUser } from "./enums.js";
+const button = document.querySelector('button');
 const footer = document.querySelector('.footer');
 const propertyContainer = document.querySelector('.properties');
 let isLoggedIn;
+// Reviews
 const reviews = [
     {
         name: 'Sheia',
@@ -92,5 +94,20 @@ for (let i = 0; i < properties.length; i++) {
     showDetails(you.permissions, card, properties[i].price);
     propertyContainer.appendChild(card);
 }
+let count = 0;
+function addReviews(array) {
+    if (!count) {
+        count++;
+        const topTwo = getTopTwoReviews(array);
+        for (let i = 0; i < topTwo.length; i++) {
+            const card = document.createElement('div');
+            card.classList.add('review-card');
+            card.innerHTML = topTwo[i].stars + ' stars from ' + topTwo[i].name;
+            reviewContainer.appendChild(card);
+        }
+        container.removeChild(button);
+    }
+}
+button.addEventListener('click', () => addReviews(reviews));
 let currentLocation = ['London', '11.03', 17];
 footer.innerHTML = currentLocation[0] + ' ' + currentLocation[1] + ' ' + currentLocation[2] + '°';
